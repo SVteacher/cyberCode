@@ -1,0 +1,41 @@
+GitHub Pages Setup
+==================
+
+1. Create a new GitHub repository named:
+   cybergrader
+   or
+   cybergrader-io
+
+2. Add these files:
+   - index.html
+   - README.txt
+   - backup_feedback.txt
+   - PROJECT_ROADMAP.txt
+   - GITHUB_SETUP.txt
+   - APPLE_GOOGLE_DECISION.txt
+
+3. Commit and push to GitHub
+
+4. In the repository on github.com:
+   Settings > Pages
+
+5. Under Build and deployment:
+   Source = Deploy from a branch
+
+6. Choose:
+   Branch = main
+   Folder = /(root)
+
+7. Save
+
+8. Wait for the site link to appear
+
+9. Open the live link on:
+   - school desktop
+   - home desktop
+   - iPhone Safari
+
+Best edit workflow
+------------------
+- Edit in Visual Studio Code
+- Push with GitHub Desktop

@@ -1,0 +1,35 @@
+CyberGrader.io Project Roadmap
+=============================
+
+WHAT IS NOW DONE
+----------------
+- GitHub Pages-ready index.html
+- Locked grading side
+- Expanded email generator aligned to real yearly communication flow
+- Subject line output
+- Body output
+- Audience selector
+- Term selector
+- Course scope selector
+- Student name / course name / date / deadline / progress fields
+- Mobile-friendly layout for iPhone browser use
+
+WHAT IS LEFT
+------------
+Highest priority
+1. Replace foundation email language with exact final locked language from your examples
+2. Tighten subject lines to your final preferred wording
+3. Decide whether to add one or two admin/helper notes blocks in the left panel
+4. Publish to GitHub Pages
+
+Nice next upgrades
+------------------
+1. Save last-used values in browser local storage
+2. Add favicon / icon
+3. Add Home Screen friendly web app metadata
+4. Optional offline cache / PWA layer
+5. Optional quick toggle for seniors vs grades 7–11 end dates
+
+RECOMMENDED NEXT STEP
+---------------------
+Push this build to GitHub Pages first, then do one final wording pass after the exact templates are reviewed.
