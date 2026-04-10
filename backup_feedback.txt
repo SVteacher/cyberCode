@@ -1,57 +1,20 @@
-CyberGrader.io Locked and Foundation Templates
-==============================================
+CyberGrader.io Final Merge Build Notes
+=====================================
 
-GRADING OUTPUTS
-===============
+LOCKED GRADING WORDING SOURCE
+-----------------------------
+This build uses the exact v4 locked grading wording for:
+- First Assignment
+- Assignment
+- Project
 
-FIRST ASSIGNMENT
+CURRENT BEHAVIOR
 ----------------
-Welcome First Nine Weeks
-Graded [DATE] - Welcome to the first nine weeks of cyber class, and your first assignment has been reviewed and recorded.
+- Grade and email overrides save on this device and browser only
+- Session Shelf stores recent or pinned outputs locally
+- Combined email output is included for easy copy/paste
 
-Welcome Second Nine Weeks
-Graded [DATE] - Welcome to the second nine weeks of cyber class, and your first assignment for this marking period has been reviewed and recorded.
-
-ASSIGNMENT
-----------
-Perfect
-Graded [DATE] - This assignment was completed correctly and full credit has been earned.
-
-Partial Credit
-Graded [DATE] - This assignment was partially completed and partial credit has been recorded based on the work submitted.
-
-Assignment Resubmit
-Graded [DATE] - This assignment needs to be revised and resubmitted so I can reassess it for updated credit.
-
-PROJECT
--------
-Perfect
-Graded [DATE] - This project was completed successfully and full credit has been earned.
-
-Good
-Graded [DATE] - This project shows solid progress and good effort, with credit recorded based on the work completed.
-
-Missing Work
-Graded [DATE] - This project is still missing required work and cannot receive full credit in its current form.
-
-EMAIL TYPES NOW BUILT
-=====================
-- Welcome Letter
-- Early Check-In
-- 25% Check-In
-- 50% Check-In
-- 75% Check-In
-- Next Nine Weeks Loaded
-- Semester / Part Change
-- Spring Break Reminder
-- Final Week Reminder
-- Senior Final Reminder
-- End of Year Grades 7–11
-- End of Year Grade 12
-
-NOTES
-=====
-- The current email language is a strong foundation build based on your uploaded examples.
-- The next pass should replace any remaining generic lines with exact final locked versions from your source file.
-- Subject lines are now part of the app workflow.
-- Dates, audience, course name, and deadline fields are editable in the UI.
+NEEDS FINAL REVIEW
+------------------
+- Third/Fourth nine weeks first-assignment welcome wording
+- Final email wording polish across all email types

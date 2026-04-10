@@ -1,9 +1,14 @@
-CyberGrader.io
-==============
+CyberGrader.io Final Merge Build
+================================
 
-Overview
---------
-CyberGrader.io is a static web app for cyber-course grading comments and recurring email communication.
+What this build does
+--------------------
+- Restores the exact locked grading wording from v4
+- Keeps the dark modern UI
+- Adds an email generator based on the actual school-year flow
+- Adds device-local save overrides
+- Adds a Session Shelf for keeping commonly reused items off to the side
+- Works as a single static HTML file for GitHub Pages or local use
 
 Languages
 ---------
@@ -11,32 +16,21 @@ Languages
 - CSS
 - JavaScript
 
-Best software for editing
--------------------------
+How to edit
+-----------
+Best editor:
 - Visual Studio Code
-- GitHub Desktop for commit/push workflow
-- GitHub website editor for quick fixes
 
-Current build strengths
------------------------
-- GitHub Pages ready
-- Single-file portable app
-- Desktop and iPhone friendly
-- Locked grading output logic
-- Expanded email system built around actual yearly workflow
-- Copy subject and copy body workflow
-- Editable fields for dates, course name, student name, progress, and audience
+Optional local desktop launcher
+-------------------------------
+- Use CyberGrader_Launcher.py to run the file locally from a browser on Windows
 
-Hosting path
-------------
-Recommended hosting:
+Hosting
+-------
+Recommended:
 - GitHub Pages
 
-Main files
-----------
-- index.html
-- README.txt
-- backup_feedback.txt
-- PROJECT_ROADMAP.txt
-- GITHUB_SETUP.txt
-- APPLE_GOOGLE_DECISION.txt
+Important behavior
+------------------
+- Save Override = saves only on that device/browser
+- Final permanent wording should be hard-coded into index.html and pushed to GitHub
