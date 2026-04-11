@@ -48,7 +48,7 @@
       background:linear-gradient(180deg, rgba(17,24,38,.95), rgba(11,18,32,.92));
       color:var(--cyan);font-weight:800;font-size:.94rem
     }
-    .main-grid{display:grid;grid-template-columns:370px minmax(0,1fr);gap:16px;align-items:start}
+    .main-grid{display:grid;grid-template-columns:360px minmax(0,1fr) 280px;gap:16px;align-items:start}
     .panel{
       background:linear-gradient(180deg, rgba(13,17,23,.97), rgba(10,14,20,.97));
       border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden
@@ -124,6 +124,21 @@
     .hint{font-size:.82rem;color:var(--muted)}
     .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
     .pill{padding:8px 12px;border-radius:999px;border:1px solid rgba(81,217,255,.18);background:rgba(81,217,255,.07);color:var(--muted);font-size:.82rem}
+
+    .cache-list{display:grid;gap:10px}
+    .cache-item{
+      border:1px solid rgba(81,217,255,.10);border-radius:14px;padding:12px;
+      background:linear-gradient(180deg, rgba(14,20,31,.95), rgba(10,14,22,.95))
+    }
+    .cache-item-title{font-size:.84rem;font-weight:800;color:var(--cyan);margin-bottom:6px}
+    .cache-item-body{font-size:.83rem;color:var(--muted);line-height:1.4;max-height:64px;overflow:hidden}
+    .cache-item-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tiny-btn{
+      border:none;border-radius:10px;padding:8px 10px;font-size:.78rem;font-weight:800;cursor:pointer;
+      background:rgba(81,217,255,.08);color:#fff;border:1px solid rgba(81,217,255,.16)
+    }
+
+    @media (max-width:1280px){.main-grid{grid-template-columns:330px minmax(0,1fr)}.cache-panel{grid-column:1 / -1}.subgrid{grid-template-columns:1fr 1fr}}
     @media (max-width:1040px){.main-grid{grid-template-columns:1fr}.subgrid{grid-template-columns:1fr 1fr}}
     @media (max-width:760px){
       body{padding:12px}
@@ -221,6 +236,7 @@
                 <button class="save-btn" id="saveGradeBtn" type="button">Save Override</button>
                 <button class="reset-btn" id="resetGradeBtn" type="button">Reset Template</button>
                 <button class="mic-btn" id="gradeMicBtn" type="button">Voice Input</button>
+                <button class="ghost-btn" id="pinGradeBtn" type="button">Save to Cache</button>
               </div>
               <div class="toolbar-right">
                 <button class="copy-btn" id="copyGradeBtn" type="button">Copy Output</button>
@@ -320,6 +336,7 @@
                 <button class="save-btn" id="saveEmailBtn" type="button">Save Override</button>
                 <button class="reset-btn" id="resetEmailBtn" type="button">Reset Template</button>
                 <button class="mic-btn" id="emailMicBtn" type="button">Voice Input</button>
+                <button class="ghost-btn" id="pinEmailBtn" type="button">Save to Cache</button>
               </div>
               <div class="toolbar-right">
                 <button class="ghost-btn" id="copySubjectBtn" type="button">Copy Subject</button>
@@ -345,6 +362,26 @@
           </div>
         </div>
       </section>
+    
+      <aside class="panel cache-panel">
+        <div class="panel-inner">
+          <h2 class="panel-title">Session Cache</h2>
+          <div class="section-card">
+            <p>Use this to keep emails, reminders, or feedback to the side while you bounce between tasks. Items here save on the device and browser.</p>
+          </div>
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <button class="ghost-btn" id="exportDataBtn" type="button">Export Device Data</button>
+              <label class="ghost-btn" for="importDataFile" style="display:inline-flex;align-items:center;justify-content:center;">Import Device Data</label>
+              <input id="importDataFile" type="file" accept="application/json" class="hidden" />
+              <button class="reset-btn" id="clearCacheBtn" type="button">Clear Cache</button>
+            </div>
+          </div>
+          <div class="cache-list" id="cacheList"></div>
+          <div class="hint">Export and import lets you move your overrides and cache between devices without a backend.</div>
+        </div>
+      </aside>
+
     </main>
 
     <div class="divider"></div>
@@ -356,7 +393,8 @@ const $ = (id) => document.getElementById(id);
 const STORAGE_KEYS = {
   gradeOverrides: "cybergrader_grade_overrides_v2",
   emailOverrides: "cybergrader_email_overrides_v2",
-  lastValues: "cybergrader_last_values_v2"
+  lastValues: "cybergrader_last_values_v2",
+  cache: "cybergrader_session_cache_v4"
 };
 
 const gradeConfig = {
@@ -421,11 +459,18 @@ $("currentDateField").value = shortDate;
 
 let gradeOverrides = loadJSON(STORAGE_KEYS.gradeOverrides);
 let emailOverrides = loadJSON(STORAGE_KEYS.emailOverrides);
+let cacheItems = loadArray(STORAGE_KEYS.cache);
 
 function loadJSON(key){
   try{return JSON.parse(localStorage.getItem(key) || "{}")}catch{return {}}
 }
 function saveJSON(key, value){
+  localStorage.setItem(key, JSON.stringify(value));
+}
+function loadArray(key){
+  try{return JSON.parse(localStorage.getItem(key) || "[]")}catch{return []}
+}
+function saveArray(key, value){
   localStorage.setItem(key, JSON.stringify(value));
 }
 function saveLastValues(){
@@ -704,6 +749,7 @@ populateGradeLevels();
 updateGradeTypes();
 updateEmailOutput(true);
 maybeAdjustFields();
+renderCache();
 
 $("workType").addEventListener("change", updateGradeTypes);
 $("outputType").addEventListener("change", () => updateGradeOutput(true));
@@ -769,6 +815,68 @@ $("emailMicBtn").addEventListener("click", () => {
 });
 $("emailSubjectOutput").addEventListener("input", updateCombined);
 $("emailBodyOutput").addEventListener("input", updateCombined);
+
+
+$("pinGradeBtn").addEventListener("click", () => {
+  addCacheItem({
+    kind:"grade",
+    title:`${$("workType").value} • ${$("outputType").value}`,
+    preview:$("gradeOutput").value.slice(0,160),
+    body:$("gradeOutput").value,
+    meta:{workType:$("workType").value, outputType:$("outputType").value}
+  });
+  $("gradeStatus").textContent = "Saved to cache.";
+});
+$("pinEmailBtn").addEventListener("click", () => {
+  addCacheItem({
+    kind:"email",
+    title:`${$("emailType").value} • ${$("gradeLevel").value}`,
+    preview:$("emailBodyOutput").value.slice(0,160),
+    subject:$("emailSubjectOutput").value,
+    body:$("emailBodyOutput").value,
+    meta:{
+      emailType:$("emailType").value,
+      gradeLevel:$("gradeLevel").value,
+      term:$("term").value,
+      courseScope:$("courseScope").value,
+      studentName:$("studentName").value,
+      courseName:$("courseName").value,
+      progressValue:$("progressValue").value,
+      currentDateField:$("currentDateField").value,
+      deadlineField:$("deadlineField").value,
+      seniorDeadline:$("seniorDeadline").value,
+      generalDeadline:$("generalDeadline").value
+    }
+  });
+  $("emailStatus").textContent = "Saved to cache.";
+});
+$("cacheList").addEventListener("click", async (e) => {
+  const btn = e.target.closest("button[data-action]");
+  if(!btn) return;
+  const idx = Number(btn.dataset.index);
+  const item = cacheItems[idx];
+  if(!item) return;
+  if(btn.dataset.action === "copy"){
+    const text = item.kind === "grade" ? item.body : `Subject: ${item.subject}\n\n${item.body}`;
+    await navigator.clipboard.writeText(text);
+  } else if(btn.dataset.action === "load"){
+    loadCacheItem(item);
+  } else if(btn.dataset.action === "delete"){
+    cacheItems.splice(idx,1);
+    saveArray(STORAGE_KEYS.cache, cacheItems);
+    renderCache();
+  }
+});
+$("clearCacheBtn").addEventListener("click", () => {
+  cacheItems = [];
+  saveArray(STORAGE_KEYS.cache, cacheItems);
+  renderCache();
+});
+$("exportDataBtn").addEventListener("click", exportDeviceData);
+$("importDataFile").addEventListener("change", (e) => {
+  const file = e.target.files?.[0];
+  if(file) importDeviceDataFromFile(file);
+});
 
 activateTab(document.querySelector('.tab-btn.grade-tab'));
 </script>
