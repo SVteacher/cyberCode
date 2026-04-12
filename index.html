@@ -7,7 +7,6 @@
   <style>
     :root{
       --bg:#05070b;
-      --bg2:#0a0f16;
       --panel:#0d131c;
       --panel2:#101826;
       --line:rgba(72,195,255,.16);
@@ -15,7 +14,6 @@
       --text:#eef6ff;
       --muted:#9daec4;
       --blue:#3cc7ff;
-      --blue2:#0aa9ff;
       --green:#84ffba;
       --red:#ff8b8b;
       --amber:#ffbf69;
@@ -35,7 +33,7 @@
       padding:14px;
     }
 
-    .app{max-width:1560px;margin:0 auto;display:grid;gap:14px}
+    .app{max-width:1320px;margin:0 auto;display:grid;gap:14px}
     .topbar{
       display:flex;justify-content:space-between;align-items:center;gap:12px;
       padding:18px 20px;border:1px solid var(--line);border-radius:22px;
@@ -53,21 +51,11 @@
     .date-box .label{display:block;color:var(--muted);font-size:.76rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
     .date-box .value{display:block;margin-top:4px;color:var(--blue);font-weight:900}
 
-    .layout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:14px;align-items:start}
     .panel{
       background:linear-gradient(180deg, rgba(12,18,26,.97), rgba(8,12,18,.97));
       border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;
     }
     .panel-inner{padding:16px}
-    .panel-title{margin:0 0 12px;font-size:1rem;color:var(--blue);font-weight:900;letter-spacing:.02em}
-    .card{
-      background:linear-gradient(180deg, rgba(16,24,36,.95), rgba(11,17,28,.95));
-      border:1px solid rgba(72,195,255,.10);border-radius:16px;padding:14px;margin-bottom:12px;
-    }
-    .card:last-child{margin-bottom:0}
-    .card h3{margin:0 0 10px;font-size:.96rem}
-    .card p,.card li{margin:0;color:var(--muted);line-height:1.5;font-size:.92rem}
-    .card ul{margin:0;padding-left:18px;display:grid;gap:8px}
 
     .tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
     .tab-btn{
@@ -80,7 +68,6 @@
     .tab-btn.active.email{color:#fff;border-color:rgba(255,191,105,.40);box-shadow:0 0 0 4px rgba(255,191,105,.07)}
     .tab-panel{display:none}
     .tab-panel.active{display:block}
-    .tab-help{color:var(--muted);font-size:.84rem;margin-bottom:16px}
 
     .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
     .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -99,11 +86,10 @@
     }
     select option{background:#0d1522;color:#eef6ff}
     textarea{min-height:170px;resize:vertical;line-height:1.52}
-    .small-textarea{min-height:86px}
+    .small-textarea{min-height:90px}
 
     .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:14px 0 10px}
     .toolbar-left,.toolbar-right{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-
     button{
       border:none;border-radius:12px;padding:12px 14px;font:inherit;font-weight:900;cursor:pointer;transition:.18s ease;
     }
@@ -117,12 +103,11 @@
 
     .status{min-height:1.2em;font-size:.84rem;color:var(--green);margin-top:8px}
     .hint{font-size:.82rem;color:var(--muted)}
-    .divider{height:1px;background:linear-gradient(90deg, transparent, rgba(72,195,255,.2), transparent);margin:4px 0}
     .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
     .pill{padding:8px 11px;border-radius:999px;background:rgba(72,195,255,.07);border:1px solid rgba(72,195,255,.16);color:var(--muted);font-size:.8rem}
+    .divider{height:1px;background:linear-gradient(90deg, transparent, rgba(72,195,255,.2), transparent);margin:4px 0}
     .footer{text-align:center;color:var(--muted);font-size:.9rem;padding:8px 0 2px;font-style:italic}
 
-    @media (max-width:1100px){ .layout{grid-template-columns:1fr} }
     @media (max-width:760px){
       body{padding:10px}
       .topbar{flex-direction:column;align-items:flex-start}
@@ -138,7 +123,7 @@
     <header class="topbar">
       <div class="brand-wrap">
         <h1 class="brand">CyberGrader<span class="accent">.io</span></h1>
-        <p class="subtitle">Fast grading and email workflow for daily cyber course use</p>
+        <p class="subtitle">Fast grading and email workflow</p>
       </div>
       <div class="date-box">
         <span class="label">Today’s Date</span>
@@ -146,211 +131,171 @@
       </div>
     </header>
 
-    <main class="layout">
-      <aside class="panel">
-        <div class="panel-inner">
-          <h2 class="panel-title">Workflow</h2>
-          <div class="card">
-            <ul>
-              <li>Grading uses your locked wording exactly, with Option 1 / 2 / 3.</li>
-              <li>Email templates follow your real sequence and tone.</li>
-              <li>Overrides save only on the current device and browser.</li>
-              <li>Session Cache stores current values for quick reuse during the day.</li>
-            </ul>
-          </div>
-
-          <h2 class="panel-title">Built For Speed</h2>
-          <div class="card">
-            <ul>
-              <li>Single HTML file</li>
-              <li>GitHub Pages friendly</li>
-              <li>No backend required</li>
-              <li>Desktop and iPhone responsive</li>
-            </ul>
-          </div>
-
-          <h2 class="panel-title">Email Flow Included</h2>
-          <div class="card">
-            <ul>
-              <li>Welcome</li>
-              <li>Early check-in</li>
-              <li>25%, 50%, and 75%</li>
-              <li>Next nine weeks loaded</li>
-              <li>Semester / part change</li>
-              <li>Spring break</li>
-              <li>Final week</li>
-              <li>Seniors final</li>
-              <li>End-of-year</li>
-            </ul>
-          </div>
+    <section class="panel">
+      <div class="panel-inner">
+        <div class="tabs" role="tablist" aria-label="CyberGrader tabs">
+          <button class="tab-btn grade active" data-tab="gradingTab" role="tab" aria-selected="true">Grading Output</button>
+          <button class="tab-btn email" data-tab="emailTab" role="tab" aria-selected="false">Email Generator</button>
         </div>
-      </aside>
 
-      <section class="panel">
-        <div class="panel-inner">
-          <div class="tabs" role="tablist" aria-label="CyberGrader tabs">
-            <button class="tab-btn grade active" data-tab="gradingTab" role="tab" aria-selected="true">Grading Output</button>
-            <button class="tab-btn email" data-tab="emailTab" role="tab" aria-selected="false">Email Generator</button>
-          </div>
-          <div class="tab-help" id="tabHelp">Pick the work type, category, and option. Output updates instantly.</div>
-
-          <div class="tab-panel active" id="gradingTab" role="tabpanel">
-            <div class="grid-3">
-              <div class="field">
-                <label for="workType">Work Type</label>
-                <select id="workType"></select>
-              </div>
-              <div class="field">
-                <label for="categoryType">Category</label>
-                <select id="categoryType"></select>
-              </div>
-              <div class="field">
-                <label for="optionType">Option</label>
-                <select id="optionType"></select>
-              </div>
+        <div class="tab-panel active" id="gradingTab" role="tabpanel">
+          <div class="grid-3">
+            <div class="field">
+              <label for="workType">Work Type</label>
+              <select id="workType"></select>
             </div>
-
-            <div class="toolbar">
-              <div class="toolbar-left">
-                <button class="toggle" id="editGradeToggle" type="button" aria-pressed="false">Edit Output</button>
-                <button class="save" id="saveGradeOverride" type="button">Save Override</button>
-                <button class="danger" id="resetGradeOverride" type="button">Reset Template</button>
-              </div>
+            <div class="field">
+              <label for="categoryType">Category</label>
+              <select id="categoryType"></select>
             </div>
-
-            <div class="field full">
-              <label for="gradeOutput">Generated Output</label>
-              <textarea id="gradeOutput" readonly spellcheck="true"></textarea>
+            <div class="field">
+              <label for="optionType">Option</label>
+              <select id="optionType"></select>
             </div>
-            <div class="toolbar">
-              <div class="toolbar-left">
-                <button class="primary" id="copyGradeOutput" type="button">Copy Output</button>
-              </div>
-            </div>
-            <div class="status" id="gradeStatus"></div>
-            <div class="hint">Option 1 is selected automatically every time a category changes.</div>
           </div>
 
-          <div class="tab-panel" id="emailTab" role="tabpanel">
-            <div class="pill-row">
-              <span class="pill">Real workflow</span>
-              <span class="pill">Student-friendly tone</span>
-              <span class="pill">Bulk and single-student use</span>
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <button class="toggle" id="editGradeToggle" type="button" aria-pressed="false">Edit Output</button>
+              <button class="save" id="saveGradeOverride" type="button">Save Override</button>
+              <button class="danger" id="resetGradeOverride" type="button">Reset Template</button>
             </div>
-
-            <div class="grid-2">
-              <div class="field">
-                <label for="emailType">Email Type</label>
-                <select id="emailType"></select>
-              </div>
-              <div class="field">
-                <label for="audienceType">Audience</label>
-                <select id="audienceType"></select>
-              </div>
-
-              <div class="field">
-                <label for="termType">Current Term</label>
-                <select id="termType">
-                  <option value="first">First Nine Weeks</option>
-                  <option value="second">Second Nine Weeks</option>
-                  <option value="third">Third Nine Weeks</option>
-                  <option value="fourth">Fourth Nine Weeks</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="courseScope">Course Scope</label>
-                <select id="courseScope">
-                  <option value="nineweeks">Nine Weeks Course</option>
-                  <option value="semester">Semester Course</option>
-                  <option value="yearlong">Year-Long Course</option>
-                </select>
-              </div>
-
-              <div class="field hidden" id="studentNameWrap">
-                <label for="studentName">Student Name</label>
-                <input type="text" id="studentName" placeholder="Only used for single-student emails" />
-              </div>
-
-              <div class="field">
-                <label for="courseName">Course Name</label>
-                <input type="text" id="courseName" placeholder="Optional" />
-              </div>
-            </div>
-
-            <div class="grid-3">
-              <div class="field" id="progressWrap">
-                <label for="progressTarget">Progress Target</label>
-                <input type="text" id="progressTarget" value="25%" />
-              </div>
-              <div class="field" id="referenceDateWrap">
-                <label for="referenceDate">Reference Date</label>
-                <input type="text" id="referenceDate" />
-              </div>
-              <div class="field" id="deadlineWrap">
-                <label for="deadlineDate">Deadline / End Date</label>
-                <input type="text" id="deadlineDate" placeholder="Example: Thursday, March 19 at 11:59 p.m." />
-              </div>
-            </div>
-
-            <div class="grid-2" id="dualDeadlineWrap">
-              <div class="field">
-                <label for="seniorDeadline">Senior Deadline</label>
-                <input type="text" id="seniorDeadline" placeholder="Example: Monday, May 19 at 11:59 p.m." />
-              </div>
-              <div class="field">
-                <label for="generalDeadline">Grades 7–11 Deadline</label>
-                <input type="text" id="generalDeadline" placeholder="Example: Monday, June 2 at 11:59 p.m." />
-              </div>
-            </div>
-
-            <div class="toolbar">
-              <div class="toolbar-left">
-                <button class="toggle" id="editSubjectToggle" type="button" aria-pressed="false">Edit Subject</button>
-                <button class="toggle" id="editBodyToggle" type="button" aria-pressed="false">Edit Body</button>
-                <button class="save" id="saveEmailOverride" type="button">Save Override</button>
-                <button class="danger" id="resetEmailOverride" type="button">Reset Template</button>
-              </div>
-              <div class="toolbar-right">
-                <button class="ghost" id="copySubject" type="button">Copy Subject</button>
-                <button class="primary" id="copyBody" type="button">Copy Body</button>
-                <button class="ghost" id="copyCombined" type="button">Copy Combined</button>
-              </div>
-            </div>
-
-            <div class="field full">
-              <label for="emailSubject">Email Subject</label>
-              <textarea id="emailSubject" class="small-textarea" readonly spellcheck="true"></textarea>
-            </div>
-            <div class="field full">
-              <label for="emailBody">Email Body</label>
-              <textarea id="emailBody" readonly spellcheck="true"></textarea>
-            </div>
-            <div class="field full">
-              <label for="emailCombined">Combined Output</label>
-              <textarea id="emailCombined" readonly spellcheck="true"></textarea>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="toolbar">
-              <div class="toolbar-left">
-                <button class="save" id="saveSessionCache" type="button">Save Session Cache</button>
-                <button class="ghost" id="loadSessionCache" type="button">Reuse Session Cache</button>
-                <button class="danger" id="deleteSessionCache" type="button">Delete Session Cache</button>
-              </div>
-              <div class="toolbar-right">
-                <button class="ghost" id="exportJson" type="button">Export JSON</button>
-                <button class="ghost" id="importJsonBtn" type="button">Import JSON</button>
-                <input type="file" id="importJsonInput" accept="application/json" hidden />
-              </div>
-            </div>
-
-            <div class="status" id="emailStatus"></div>
-            <div class="hint">Export / Import JSON is for manual cross-device sync. Overrides and cache stay local unless you export them.</div>
           </div>
+
+          <div class="field full">
+            <label for="gradeOutput">Generated Output</label>
+            <textarea id="gradeOutput" readonly spellcheck="true"></textarea>
+          </div>
+
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <button class="primary" id="copyGradeOutput" type="button">Copy Output</button>
+            </div>
+          </div>
+          <div class="status" id="gradeStatus"></div>
+          <div class="hint">Option 1 auto-loads whenever the category changes.</div>
         </div>
-      </section>
-    </main>
+
+        <div class="tab-panel" id="emailTab" role="tabpanel">
+          <div class="pill-row">
+            <span class="pill">Welcome</span>
+            <span class="pill">25 / 50 / 75%</span>
+            <span class="pill">Final week</span>
+            <span class="pill">Seniors final</span>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="emailType">Email Type</label>
+              <select id="emailType"></select>
+            </div>
+            <div class="field">
+              <label for="audienceType">Audience</label>
+              <select id="audienceType"></select>
+            </div>
+
+            <div class="field">
+              <label for="termType">Current Term</label>
+              <select id="termType">
+                <option value="first">First Nine Weeks</option>
+                <option value="second">Second Nine Weeks</option>
+                <option value="third">Third Nine Weeks</option>
+                <option value="fourth">Fourth Nine Weeks</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="courseScope">Course Scope</label>
+              <select id="courseScope">
+                <option value="nineweeks">Nine Weeks Course</option>
+                <option value="semester">Semester Course</option>
+                <option value="yearlong">Year-Long Course</option>
+              </select>
+            </div>
+
+            <div class="field hidden" id="studentNameWrap">
+              <label for="studentName">Student Name</label>
+              <input type="text" id="studentName" placeholder="Only used for single-student emails" />
+            </div>
+
+            <div class="field">
+              <label for="courseName">Course Name</label>
+              <input type="text" id="courseName" placeholder="Optional" />
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="field" id="progressWrap">
+              <label for="progressTarget">Progress Target</label>
+              <input type="text" id="progressTarget" value="25%" />
+            </div>
+            <div class="field" id="referenceDateWrap">
+              <label for="referenceDate">Reference Date</label>
+              <input type="text" id="referenceDate" />
+            </div>
+            <div class="field" id="deadlineWrap">
+              <label for="deadlineDate">Deadline / End Date</label>
+              <input type="text" id="deadlineDate" placeholder="Example: Thursday, March 19 at 11:59 p.m." />
+            </div>
+          </div>
+
+          <div class="grid-2" id="dualDeadlineWrap">
+            <div class="field">
+              <label for="seniorDeadline">Senior Deadline</label>
+              <input type="text" id="seniorDeadline" placeholder="Example: Monday, May 19 at 11:59 p.m." />
+            </div>
+            <div class="field">
+              <label for="generalDeadline">Grades 7–11 Deadline</label>
+              <input type="text" id="generalDeadline" placeholder="Example: Monday, June 2 at 11:59 p.m." />
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <button class="toggle" id="editSubjectToggle" type="button" aria-pressed="false">Edit Subject</button>
+              <button class="toggle" id="editBodyToggle" type="button" aria-pressed="false">Edit Body</button>
+              <button class="save" id="saveEmailOverride" type="button">Save Override</button>
+              <button class="danger" id="resetEmailOverride" type="button">Reset Template</button>
+            </div>
+            <div class="toolbar-right">
+              <button class="ghost" id="copySubject" type="button">Copy Subject</button>
+              <button class="primary" id="copyBody" type="button">Copy Body</button>
+              <button class="ghost" id="copyCombined" type="button">Copy Combined</button>
+            </div>
+          </div>
+
+          <div class="field full">
+            <label for="emailSubject">Email Subject</label>
+            <textarea id="emailSubject" class="small-textarea" readonly spellcheck="true"></textarea>
+          </div>
+          <div class="field full">
+            <label for="emailBody">Email Body</label>
+            <textarea id="emailBody" readonly spellcheck="true"></textarea>
+          </div>
+          <div class="field full">
+            <label for="emailCombined">Combined Output</label>
+            <textarea id="emailCombined" readonly spellcheck="true"></textarea>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <button class="save" id="saveSessionCache" type="button">Save Session Cache</button>
+              <button class="ghost" id="loadSessionCache" type="button">Reuse Session Cache</button>
+              <button class="danger" id="deleteSessionCache" type="button">Delete Session Cache</button>
+            </div>
+            <div class="toolbar-right">
+              <button class="ghost" id="exportJson" type="button">Export JSON</button>
+              <button class="ghost" id="importJsonBtn" type="button">Import JSON</button>
+              <input type="file" id="importJsonInput" accept="application/json" hidden />
+            </div>
+          </div>
+
+          <div class="status" id="emailStatus"></div>
+          <div class="hint">Export / Import JSON handles your local cache and overrides.</div>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">Created by percycodes</footer>
   </div>
@@ -364,439 +309,431 @@
       sessionCache: 'cybergrader_phase2_session_cache'
     };
 
-    const today = new Date();
-    const longDate = today.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
-    const shortDate = today.toLocaleDateString('en-US');
-    $('todayDate').textContent = longDate;
-    $('referenceDate').value = shortDate;
-
     const gradingData = {
-      'First Assignment': {
-        'First Assignment Feedback': {
-          'Option 1': `You’re off to a really good start. I can already tell you’re ready to grow and level up this quarter. If you need anything at all, I’m here to help. Quick tip — working ahead is always a smart move, so keep doing your best and you’ll stay on track.`,
-          'Option 2': `Welcome to the class! I reviewed your first assignment, and you’re starting strong. Your work was clear and showed real effort. Everything’s been scored based on what you completed. Keep this energy going — it’s a great way to kick off the semester.`,
-          'Option 3': `Nice job getting your first assignment done. You showed good effort, and it already tells me you’re ready to stay on track. If anything comes up or you get lost in the lessons, message me anytime — I’m here to help make this course easier for you.`
+      "First Assignment": {
+        "First Assignment Feedback": {
+          "Option 1": "You’re off to a really good start. I can already tell you’re ready to grow and level up this quarter. If you need anything at all, I’m here to help. Quick tip — working ahead is always a smart move, so keep doing your best and you’ll stay on track.",
+          "Option 2": "Welcome to the class! I reviewed your first assignment, and you’re starting strong. Your work was clear and showed real effort. Everything’s been scored based on what you completed. Keep this energy going — it’s a great way to kick off the semester.",
+          "Option 3": "Nice job getting your first assignment done. You showed good effort, and it already tells me you’re ready to stay on track. If anything comes up or you get lost in the lessons, message me anytime — I’m here to help make this course easier for you."
         }
       },
-      'Assignment': {
-        '100% Assignment Feedback': {
-          'Option 1': `Perfect score — awesome work. You clearly took your time and actually understood the lesson. Keep this momentum going, and if anything ever feels confusing or you get stuck, just reach out. I’m always here to help.`,
-          'Option 2': `Full credit — really strong work here. You understood the lesson and your responses showed it clearly. Keep that focus going, and reach out if you ever want help before tackling the next one.`,
-          'Option 3': `Great job — everything was correct and well written. Keep up this level of detail moving forward. If something ever feels confusing, don’t wait — send me a message and I’ll walk you through it.`
+      "Assignment": {
+        "100% Assignment Feedback": {
+          "Option 1": "Perfect score — awesome work. You clearly took your time and actually understood the lesson. Keep this momentum going, and if anything ever feels confusing or you get stuck, just reach out. I’m always here to help.",
+          "Option 2": "Full credit — really strong work here. You understood the lesson and your responses showed it clearly. Keep that focus going, and reach out if you ever want help before tackling the next one.",
+          "Option 3": "Great job — everything was correct and well written. Keep up this level of detail moving forward. If something ever feels confusing, don’t wait — send me a message and I’ll walk you through it."
         },
-        'Partial Credit Assignment Feedback': {
-          'Option 1': `Graded — I looked through all your work and gave credit anywhere you were on the right track or showed solid understanding. If anything feels confusing at all, reach out — I’m here to help you through it.`,
-          'Option 2': `You earned partial credit here. Some of your answers were strong, others need a little more detail. If you’d like to improve the score, message me and I’ll point you toward exactly what to fix.`,
-          'Option 3': `Solid effort overall. I gave points wherever your answers showed good reasoning. A few items still need more detail or correction. Reach out if you’d like help walking through any of it.`
+        "Partial Credit Assignment Feedback": {
+          "Option 1": "Graded — I looked through all your work and gave credit anywhere you were on the right track or showed solid understanding. If anything feels confusing at all, reach out — I’m here to help you through it.",
+          "Option 2": "You earned partial credit here. Some of your answers were strong, others need a little more detail. If you’d like to improve the score, message me and I’ll point you toward exactly what to fix.",
+          "Option 3": "Solid effort overall. I gave points wherever your answers showed good reasoning. A few items still need more detail or correction. Reach out if you’d like help walking through any of it."
         }
       },
-      'Project': {
-        '100% Project Feedback': {
-          'Option 1': `Excellent work! Everything was clear, well organized, and thoughtfully done. Keep bringing this level of effort — it really makes a difference when you see your final grade.`,
-          'Option 2': `Outstanding project. You hit every requirement and showed real understanding. This is the kind of work that sets you up for a strong final grade — keep it up.`,
-          'Option 3': `Great job — you met all the basic requirements but please try and add more creativity into your files - it keeps the reader engaged! Keep this momentum going across the rest of the course.`
+      "Project": {
+        "100% Project Feedback": {
+          "Option 1": "Excellent work! Everything was clear, well organized, and thoughtfully done. Keep bringing this level of effort — it really makes a difference when you see your final grade.",
+          "Option 2": "Outstanding project. You hit every requirement and showed real understanding. This is the kind of work that sets you up for a strong final grade — keep it up.",
+          "Option 3": "Great job — you met all the basic requirements but please try and add more creativity into your files - it keeps the reader engaged! Keep this momentum going across the rest of the course."
         },
-        'Project Needs Resubmission (50%–0%)': {
-          'Option 1': `I reviewed your submission carefully, but it’s missing a few required parts (or the wrong file may have been uploaded). If you’d like to resubmit or if anything was confusing, just let me know. I want to give you a fair chance to earn a solid score since projects make up a big part of your grade.`,
-          'Option 2': `This project needs a bit more work before I can give full credit. Go back through the directions or rubric, make the updates, and resubmit when you’re ready. If any part didn’t make sense, reach out and I’ll help you through it.`,
-          'Option 3': `It looks like some required parts weren’t included. Take another look at the instructions, update the missing components, and resubmit. If you’re unsure what to fix, message me and I’ll walk you through it step-by-step.`
+        "Project Needs Resubmission (50%–0%)": {
+          "Option 1": "I reviewed your submission carefully, but it’s missing a few required parts (or the wrong file may have been uploaded). If you’d like to resubmit or if anything was confusing, just let me know. I want to give you a fair chance to earn a solid score since projects make up a big part of your grade.",
+          "Option 2": "This project needs a bit more work before I can give full credit. Go back through the directions or rubric, make the updates, and resubmit when you’re ready. If any part didn’t make sense, reach out and I’ll help you through it.",
+          "Option 3": "It looks like some required parts weren’t included. Take another look at the instructions, update the missing components, and resubmit. If you’re unsure what to fix, message me and I’ll walk you through it step-by-step."
         }
       }
     };
 
     const emailTypes = [
-      'Welcome',
-      'Early Check-In',
-      '25% Check-In',
-      '50% Check-In',
-      '75% Check-In',
-      'Next Nine Weeks Loaded',
-      'Semester / Part Change',
-      'Spring Break',
-      'Final Week',
-      'Seniors Final',
-      'End-of-Year',
-      'General Start / Motivation'
+      "Welcome",
+      "Early Check-In",
+      "25% Check-In",
+      "50% Check-In",
+      "75% Check-In",
+      "Next Nine Weeks Loaded",
+      "Semester / Part Change",
+      "Spring Break",
+      "Final Week",
+      "Seniors Final",
+      "End-of-Year",
+      "General Start / Motivation"
     ];
 
     const audienceOptions = {
-      'Welcome': ['All Students', 'Single Student'],
-      'Early Check-In': ['All Students', 'Single Student'],
-      '25% Check-In': ['All Students', 'Single Student'],
-      '50% Check-In': ['All Students', 'Single Student'],
-      '75% Check-In': ['All Students', 'Single Student'],
-      'Next Nine Weeks Loaded': ['All Students', 'Single Student'],
-      'Semester / Part Change': ['All Students', 'Single Student'],
-      'Spring Break': ['All Students'],
-      'Final Week': ['All Students'],
-      'Seniors Final': ['Seniors'],
-      'End-of-Year': ['All Students', 'Seniors'],
-      'General Start / Motivation': ['Single Student']
+      "Welcome": ["All Students", "Single Student"],
+      "Early Check-In": ["All Students", "Single Student"],
+      "25% Check-In": ["All Students", "Single Student"],
+      "50% Check-In": ["All Students", "Single Student"],
+      "75% Check-In": ["All Students", "Single Student"],
+      "Next Nine Weeks Loaded": ["All Students", "Single Student"],
+      "Semester / Part Change": ["All Students", "Single Student"],
+      "Spring Break": ["All Students"],
+      "Final Week": ["All Students"],
+      "Seniors Final": ["Seniors"],
+      "End-of-Year": ["All Students", "Seniors"],
+      "General Start / Motivation": ["Single Student"]
     };
 
-    function loadJSON(key, fallback={}){
-      try{return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));}
-      catch{return fallback;}
+    function loadJSON(key, fallback = {}) {
+      try {
+        return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
+      } catch {
+        return fallback;
+      }
     }
-    function saveJSON(key, value){ localStorage.setItem(key, JSON.stringify(value)); }
+
+    function saveJSON(key, value) {
+      localStorage.setItem(key, JSON.stringify(value));
+    }
 
     let gradeOverrides = loadJSON(STORAGE.gradeOverrides, {});
     let emailOverrides = loadJSON(STORAGE.emailOverrides, {});
 
-    function setOptions(el, values){
-      el.innerHTML = '';
-      values.forEach(value => {
-        const opt = document.createElement('option');
+    function setOptions(el, values) {
+      el.innerHTML = "";
+      values.forEach((value) => {
+        const opt = document.createElement("option");
         opt.value = value;
         opt.textContent = value;
         el.appendChild(opt);
       });
     }
 
-    function gradeKey(){
-      return [$('workType').value, $('categoryType').value, $('optionType').value].join('||');
+    function gradeKey() {
+      return [$("workType").value, $("categoryType").value, $("optionType").value].join("||");
     }
 
-    function emailKey(){
-      return [
-        $('emailType').value,
-        $('audienceType').value,
-        $('termType').value,
-        $('courseScope').value
-      ].join('||');
+    function emailKey() {
+      return [$("emailType").value, $("audienceType").value, $("termType").value, $("courseScope").value].join("||");
     }
 
-    function updateGradeCategories(){
-      const workType = $('workType').value;
-      setOptions($('categoryType'), Object.keys(gradingData[workType] || {}));
+    function getTodayStrings() {
+      const now = new Date();
+      return {
+        long: now.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" }),
+        short: now.toLocaleDateString("en-US")
+      };
+    }
+
+    function setToday() {
+      const dates = getTodayStrings();
+      $("todayDate").textContent = dates.long;
+      $("referenceDate").value = dates.short;
+    }
+
+    function updateGradeCategories() {
+      const workType = $("workType").value;
+      setOptions($("categoryType"), Object.keys(gradingData[workType] || {}));
       updateGradeOptions();
     }
 
-    function updateGradeOptions(){
-      const workType = $('workType').value;
-      const category = $('categoryType').value;
-      setOptions($('optionType'), Object.keys((gradingData[workType] || {})[category] || {}));
-      $('optionType').value = 'Option 1';
+    function updateGradeOptions() {
+      const workType = $("workType").value;
+      const category = $("categoryType").value;
+      setOptions($("optionType"), Object.keys((gradingData[workType] || {})[category] || {}));
+      $("optionType").value = "Option 1";
       updateGradeOutput(true);
     }
 
-    function getDefaultGradeText(){
-      const workType = $('workType').value;
-      const category = $('categoryType').value;
-      const option = $('optionType').value;
-      return gradingData[workType]?.[category]?.[option] || '';
+    function getDefaultGradeText() {
+      const workType = $("workType").value;
+      const category = $("categoryType").value;
+      const option = $("optionType").value;
+      return gradingData[workType]?.[category]?.[option] || "";
     }
 
-    function updateGradeOutput(force=false){
-      if (!$('gradeOutput').readOnly && !force) return;
-      $('gradeOutput').value = gradeOverrides[gradeKey()] || getDefaultGradeText();
+    function updateGradeOutput(force = false) {
+      if (!$("gradeOutput").readOnly && !force) return;
+      $("gradeOutput").value = gradeOverrides[gradeKey()] || getDefaultGradeText();
     }
 
-    function setEditable(textarea, button, on){
-      textarea.readOnly = !on;
-      button.classList.toggle('active', on);
-      button.setAttribute('aria-pressed', on ? 'true' : 'false');
-      if (on) textarea.focus();
+    function setEditable(textarea, button, editable) {
+      textarea.readOnly = !editable;
+      button.classList.toggle("active", editable);
+      button.setAttribute("aria-pressed", editable ? "true" : "false");
+      if (editable) textarea.focus();
     }
 
-    async function copyText(text, statusEl, button){
-      try{
+    async function copyText(text, statusEl, button) {
+      try {
         await navigator.clipboard.writeText(text);
         const old = button.textContent;
-        button.textContent = 'Copied';
-        statusEl.textContent = 'Copied to clipboard.';
-        setTimeout(() => { button.textContent = old; statusEl.textContent = ''; }, 1400);
-      }catch{
-        statusEl.textContent = 'Copy failed. Select the text and copy manually.';
+        button.textContent = "Copied";
+        statusEl.textContent = "Copied to clipboard.";
+        setTimeout(() => {
+          button.textContent = old;
+          statusEl.textContent = "";
+        }, 1400);
+      } catch {
+        statusEl.textContent = "Copy failed. Select the text and copy manually.";
       }
     }
 
-    function normalizeTerm(term){
+    function normalizeTerm(term) {
       return {
-        first:'first nine weeks',
-        second:'second nine weeks',
-        third:'third nine weeks',
-        fourth:'fourth nine weeks'
-      }[term] || 'current grading period';
+        first: "first nine weeks",
+        second: "second nine weeks",
+        third: "third nine weeks",
+        fourth: "fourth nine weeks"
+      }[term] || "current grading period";
     }
 
-    function nextTerm(term){
+    function nextTerm(term) {
       return {
-        first:'second nine weeks',
-        second:'third nine weeks',
-        third:'fourth nine weeks',
-        fourth:'next grading period'
-      }[term] || 'next grading period';
+        first: "second nine weeks",
+        second: "third nine weeks",
+        third: "fourth nine weeks",
+        fourth: "next grading period"
+      }[term] || "next grading period";
     }
 
-    function greeting(audience, name){
-      if (audience === 'Seniors') return 'Hi Seniors,';
-      if (audience === 'Single Student') return `${(name || 'Student').trim()},`;
-      return 'Hi Students,';
+    function greeting(audience, name) {
+      if (audience === "Seniors") return "Hi Seniors,";
+      if (audience === "Single Student") return `${(name || "Student").trim()},`;
+      return "Hi Students,";
     }
 
-    function defaultProgress(type){
-      if (type === '25% Check-In') return '25%';
-      if (type === '50% Check-In') return '50%';
-      if (type === '75% Check-In') return '75%';
-      if (type === 'Final Week') return '90%';
-      return $('progressTarget').value.trim();
+    function defaultProgress(type) {
+      if (type === "25% Check-In") return "25%";
+      if (type === "50% Check-In") return "50%";
+      if (type === "75% Check-In") return "75%";
+      if (type === "Final Week") return "90%";
+      return $("progressTarget").value.trim();
     }
 
-    function buildDualDeadlineBlock(){
-      const senior = $('seniorDeadline').value.trim();
-      const general = $('generalDeadline').value.trim();
-      if (!senior && !general) return '';
-      return [
-        'Please note the following deadlines:',
-        senior ? `Seniors: ${senior}` : '',
-        general ? `Grades 7–11: ${general}` : ''
-      ].filter(Boolean).join('\n');
+    function buildDualDeadlineBlock() {
+      const senior = $("seniorDeadline").value.trim();
+      const general = $("generalDeadline").value.trim();
+      const lines = [];
+      if (senior) lines.push(`Seniors: ${senior}`);
+      if (general) lines.push(`Grades 7–11: ${general}`);
+      if (!lines.length) return "";
+      return `Please note the following deadlines:\n${lines.join("\n")}`;
     }
 
-    function buildEmailTemplate(){
-      const type = $('emailType').value;
-      const audience = $('audienceType').value;
-      const term = $('termType').value;
-      const scope = $('courseScope').value;
-      const studentName = $('studentName').value.trim();
-      const courseName = $('courseName').value.trim();
+    function buildEmailTemplate() {
+      const type = $("emailType").value;
+      const audience = $("audienceType").value;
+      const term = $("termType").value;
+      const studentName = $("studentName").value.trim();
+      const courseName = $("courseName").value.trim();
       const progress = defaultProgress(type);
-      const refDate = $('referenceDate').value.trim() || shortDate;
-      const deadline = $('deadlineDate').value.trim();
+      const refDate = $("referenceDate").value.trim() || getTodayStrings().short;
+      const deadline = $("deadlineDate").value.trim();
       const greet = greeting(audience, studentName);
       const termName = normalizeTerm(term);
       const nextName = nextTerm(term);
       const dual = buildDualDeadlineBlock();
-      const namedCourse = courseName ? `${courseName} ` : '';
-      const isFourthAll = term === 'fourth' && audience === 'All Students';
+      const namedCourse = courseName ? `${courseName} ` : "";
+      const isFourthAll = term === "fourth" && audience === "All Students";
 
-      switch(type){
-        case 'Welcome': {
-          const subject = audience === 'Single Student' && courseName
-            ? `Welcome to ${courseName}`
-            : 'Welcome to the School Year!!';
-          const body = audience === 'Single Student'
-            ? `${studentName || 'Student'},\n\nWelcome to your ${namedCourse}cyber course! My name is Mr. Macek, and I’ll be your teacher. I’m looking forward to helping you through the course.\n\nPlease begin by reviewing the course syllabus and opening assignments carefully. If anything is unclear or you run into a problem, reach out to me right away. I’m here to help.\n\nGood luck!\n\nMr. Macek`
+      switch (type) {
+        case "Welcome": {
+          const subject = audience === "Single Student" && courseName ? `Welcome to ${courseName}` : "Welcome to the School Year!!";
+          const body = audience === "Single Student"
+            ? `${studentName || "Student"},\n\nWelcome to your ${namedCourse}cyber course! My name is Mr. Macek, and I’ll be your teacher. I’m looking forward to helping you through the course.\n\nPlease begin by reviewing the course syllabus and opening assignments carefully. If anything is unclear or you run into a problem, reach out to me right away. I’m here to help.\n\nGood luck!\n\nMr. Macek`
             : `Hi Students,\n\nWelcome to your Tech Ed/Programming Cyber Course! My name is Mr. Macek, and I’ll be your teacher this year. I’m looking forward to helping you learn, create, and problem-solve as we move through the course together.\n\nAttached is a Welcome Letter with important details—please read it carefully. One of your first assignments is to read the course syllabus. The syllabus outlines expectations, grading policies, and the class's structure, so please take your time reviewing it and reach out if anything is unclear.\n\nCommunication is a big part of doing well in an online course. Be sure to check in often, respond to my messages, and email me if you have questions or run into issues. Staying connected makes cyber much easier.\n\nI’m excited to get started and look forward to a great year with you!\n\nGood Luck!\n\nMr. Macek`;
           return { subject, body };
         }
-        case 'Early Check-In': {
-          const body = audience === 'Single Student'
-            ? `${studentName || 'Student'},\n\nI wanted to check in. This is a good time to make sure you are actively working in your cyber course and staying on pace.\n\nIf something is unclear, if you are stuck, or if you need help getting going, reach out to me. I’m here to help.\n\nThank you,\n\nMr. Macek`
-            : `Hi Students,\n\nI wanted to check in now that the add/drop period has settled. This is a good time to make sure you are actively working in your cyber course and staying on pace.\n\nPlease remember that you are not on your own. If something is unclear, if you are stuck, or if you need help getting going, reach out to me. I’m here to help.\n\nThank you,\n\nMr. Macek`;
-          return { subject:'Cyber Check-In', body };
-        }
-        case '25% Check-In': {
-          const intro = audience === 'Single Student'
-            ? `${studentName || 'Student'},\n\nAs of today, ${refDate}, you should be approximately ${progress} complete with your cyber coursework for the ${termName}.`
-            : `Hi Students,\n\nAs of today, ${refDate}, you should be approximately ${progress} complete with your cyber coursework for the ${termName}.`;
+        case "Early Check-In":
           return {
-            subject:'Cyber Progress Check-In',
-            body:`${intro} If you are not at or near that mark, please reach out to me so we can make a plan.\n\nIf something is unclear or you are stuck, I’m here to help — but communication is key.\n\n${isFourthAll && dual ? dual + '\n\n' : ''}${deadline && !isFourthAll ? `Please remember the end date for this grading period is ${deadline}.\n\n` : ''}Mr. Macek`
+            subject: "Cyber Check-In",
+            body: audience === "Single Student"
+              ? `${studentName || "Student"},\n\nI wanted to check in. This is a good time to make sure you are actively working in your cyber course and staying on pace.\n\nIf something is unclear, if you are stuck, or if you need help getting going, reach out to me. I’m here to help.\n\nThank you,\n\nMr. Macek`
+              : `Hi Students,\n\nI wanted to check in now that the add/drop period has settled. This is a good time to make sure you are actively working in your cyber course and staying on pace.\n\nPlease remember that you are not on your own. If something is unclear, if you are stuck, or if you need help getting going, reach out to me. I’m here to help.\n\nThank you,\n\nMr. Macek`
           };
-        }
-        case '50% Check-In': {
-          const intro = audience === 'Single Student'
-            ? `${studentName || 'Student'},\n\nWe are now at roughly ${progress} of the way through the grading period.`
-            : `Good evening everyone,\n\nWe are now at roughly ${progress} of the way through the grading period.`;
+        case "25% Check-In":
           return {
-            subject:'Cyber Check-In!',
-            body:`${intro} This is an important checkpoint, and the effort you put in right now will have a meaningful impact on your overall grade and progress.\n\nConsistency at this stage makes a huge difference, and even a little progress each day adds up quickly.\n\nPlease remember that you are not on your own. If you have questions, get stuck, or need guidance on where to focus next, reach out at any time. I’m always here to help you succeed.\n\n${isFourthAll && dual ? dual + '\n\n' : ''}Thank you,\n\nMr. Macek`
+            subject: "Cyber Progress Check-In",
+            body: `${audience === "Single Student" ? `${studentName || "Student"},` : "Hi Students,"}\n\nAs of today, ${refDate}, you should be approximately ${progress} complete with your cyber coursework for the ${termName}. If you are not at or near that mark, please reach out to me so we can make a plan.\n\nIf something is unclear or you are stuck, I’m here to help — but communication is key.\n\n${isFourthAll && dual ? dual + "\n\n" : ""}${deadline && !isFourthAll ? `Please remember the end date for this grading period is ${deadline}.\n\n` : ""}Mr. Macek`
           };
-        }
-        case '75% Check-In': {
-          const intro = audience === 'Single Student'
-            ? `${studentName || 'Student'},\n\nAs of today (${refDate}), we are at the ${progress} completion mark for the grading period.`
-            : `Good afternoon everyone,\n\nAs of today, we are at the ${progress} completion mark for the grading period.`;
+        case "50% Check-In":
           return {
-            subject:'75% Completion Mark - Cyber Courses',
-            body:`${intro} I have finished grading all submitted work, and all grades are current and up to date in the gradebook. If you have any questions or concerns about your progress, please contact me.\n\n${deadline && !isFourthAll ? `The end date for the grading period is ${deadline}. I highly recommend that you continue working on your course and complete all required work before that date.\n\n` : ''}Remember, asking a question online is just as important as raising your hand in class. If you are unsure about something or need help, please reach out. I’m here to help you succeed!\n\nLooking ahead, the next grading period will be loaded a few days before the current one ends.\n\n${isFourthAll && dual ? dual + '\n\n' : ''}Thanks,\nMr. Macek`
+            subject: "Cyber Check-In!",
+            body: `${audience === "Single Student" ? `${studentName || "Student"},` : "Good evening everyone,"}\n\nWe are now at roughly ${progress} of the way through the grading period. This is an important checkpoint, and the effort you put in right now will have a meaningful impact on your overall grade and progress.\n\nConsistency at this stage makes a huge difference, and even a little progress each day adds up quickly.\n\nPlease remember that you are not on your own. If you have questions, get stuck, or need guidance on where to focus next, reach out at any time. I’m always here to help you succeed.\n\n${isFourthAll && dual ? dual + "\n\n" : ""}Thank you,\n\nMr. Macek`
           };
-        }
-        case 'Next Nine Weeks Loaded': {
-          if (term === 'third' || term === 'fourth') {
+        case "75% Check-In":
+          return {
+            subject: "75% Completion Mark - Cyber Courses",
+            body: `${audience === "Single Student" ? `${studentName || "Student"},` : "Good afternoon everyone,"}\n\nAs of today, we are at the ${progress} completion mark for the grading period. I have finished grading all submitted work, and all grades are current and up to date in the gradebook. If you have any questions or concerns about your progress, please contact me.\n\n${deadline && !isFourthAll ? `The end date for the grading period is ${deadline}. I highly recommend that you continue working on your course and complete all required work before that date.\n\n` : ""}Remember, asking a question online is just as important as raising your hand in class. If you are unsure about something or need help, please reach out. I’m here to help you succeed!\n\nLooking ahead, the next grading period will be loaded a few days before the current one ends.\n\n${isFourthAll && dual ? dual + "\n\n" : ""}Thanks,\nMr. Macek`
+          };
+        case "Next Nine Weeks Loaded":
+          if (term === "third" || term === "fourth") {
             return {
-              subject:'Next Nine Weeks Added to Your Account',
-              body:`Hi everyone,\n\nAs we wrap up the cyber portion of the course, I’ll be grading throughout today and over the weekend, with everything finalized by Monday morning.\n\nIf you still have one or two tasks left, now is the time to get them completed. Leaving them blank will significantly impact your overall grade, so it’s worth finishing what you can.\n\nYour fourth nine-week courses are now loaded. Please note the following deadlines:\n${$('seniorDeadline').value.trim() ? `Seniors: ${$('seniorDeadline').value.trim()}\n` : ''}${$('generalDeadline').value.trim() ? `Grades 7–11: ${$('generalDeadline').value.trim()}\n` : ''}\nSeniors: there are no extensions in the fourth nine weeks, as this directly determines your graduation status. Plan accordingly and make sure everything is submitted on time.\n\nIf you notice any discrepancies or if something doesn’t look right, please let me know.\n\nGood luck, finish strong - you’ve got this!\n\nMr. Macek`
+              subject: "Next Nine Weeks Added to Your Account",
+              body: `Hi everyone,\n\nAs we wrap up the cyber portion of the course, I’ll be grading throughout today and over the weekend, with everything finalized by Monday morning.\n\nIf you still have one or two tasks left, now is the time to get them completed. Leaving them blank will significantly impact your overall grade, so it’s worth finishing what you can.\n\nYour fourth nine-week courses are now loaded. ${dual ? "\n\n" + dual : ""}\n\nSeniors: there are no extensions in the fourth nine weeks, as this directly determines your graduation status. Plan accordingly and make sure everything is submitted on time.\n\nIf you notice any discrepancies or if something doesn’t look right, please let me know.\n\nGood luck, finish strong - you’ve got this!\n\nMr. Macek`
             };
           }
           return {
-            subject:'Next Nine Weeks Added to Your Account',
-            body:`${greet}\n\nYour ${nextName} has now been added to your account. Please do not be alarmed or feel like you need to start working on it right now.\n\nWe load courses early so that if you are complete with the current part, you can move right into the next one without delay.\n\nIf anything looks off or you notice a discrepancy, let me know.\n\nMr. Macek`
+            subject: "Next Nine Weeks Added to Your Account",
+            body: `${greet}\n\nYour ${nextName} has now been added to your account. Please do not be alarmed or feel like you need to start working on it right now.\n\nWe load courses early so that if you are complete with the current part, you can move right into the next one without delay.\n\nIf anything looks off or you notice a discrepancy, let me know.\n\nMr. Macek`
           };
-        }
-        case 'Semester / Part Change':
+        case "Semester / Part Change":
           return {
-            subject:'Welcome to Part 2 / Next Nine Weeks',
-            body:`Hi everyone,\n\nWelcome to the second nine weeks! I wanted to inform you that I have graded your first assignment, whether it involved uploading the course syllabus, sharing your prior knowledge about the class, or answering the content question. All grades have been updated.\n\nAs we enter this grading period, please don’t hesitate to contact me immediately if you have any questions or encounter any issues. Remember, I am here to help.\n\nYou always have the option to complete your cyber course early, but late submissions are not accepted. Therefore, it’s important to stay ahead of the assignment calendar. Maintaining a steady pace now will make things much easier later on.\n\nGood luck this nine weeks!\n\nMr. Macek`
+            subject: "Welcome to Part 2 / Next Nine Weeks",
+            body: `Hi everyone,\n\nWelcome to the second nine weeks! I wanted to inform you that I have graded your first assignment, whether it involved uploading the course syllabus, sharing your prior knowledge about the class, or answering the content question. All grades have been updated.\n\nAs we enter this grading period, please don’t hesitate to contact me immediately if you have any questions or encounter any issues. Remember, I am here to help.\n\nYou always have the option to complete your cyber course early, but late submissions are not accepted. Therefore, it’s important to stay ahead of the assignment calendar. Maintaining a steady pace now will make things much easier later on.\n\nGood luck this nine weeks!\n\nMr. Macek`
           };
-        case 'Spring Break':
+        case "Spring Break":
           return {
-            subject:'Enjoy Your Break!!!',
-            body:`Hi everyone,\n\nI hope you all enjoy your spring break - you’ve earned it! I did want to mention that if you choose to work on any days while we’re off, the assignment calendar will actually allow you to get ahead in the course. If you find yourself with some free time, it’s a great opportunity to make progress and stay ahead.\n\nOther than that, enjoy your break. I’m looking forward to working with you all for the rest of the nine weeks.\n\nAs always, don’t hesitate to reach out if you have any questions.\n\nThanks,\n\nMr. Macek`
+            subject: "Enjoy Your Break!!!",
+            body: `Hi everyone,\n\nI hope you all enjoy your spring break - you’ve earned it! I did want to mention that if you choose to work on any days while we’re off, the assignment calendar will actually allow you to get ahead in the course. If you find yourself with some free time, it’s a great opportunity to make progress and stay ahead.\n\nOther than that, enjoy your break. I’m looking forward to working with you all for the rest of the nine weeks.\n\nAs always, don’t hesitate to reach out if you have any questions.\n\nThanks,\n\nMr. Macek`
           };
-        case 'Final Week':
+        case "Final Week":
           return {
-            subject:'Final Reminder: Coursework Deadline Approaching',
-            body:`Hi Students,\n\nCan you believe it? We’re now at the ${progress} mark of the fourth nine weeks, which means the end of the school year is just one week away!\n\n${isFourthAll && dual ? dual + '\n\n' : deadline ? `All cyber assignments are due by ${deadline}.\n\n` : ''}If you’re not near the ${progress} mark yet or haven’t started, don’t panic—but don’t wait. Power through those last few lessons, and don’t hesitate to reach out if you’re stuck. I’m here to support you all the way to the finish line.\n\nIf you’re on track or ahead—amazing work! Keep that momentum going. The effort you put in now will pay off with a strong finish and a stress-free summer. You’ve come so far—dig deep, stay focused, and make this final week count.\n\nYou got this!\n\nMr. Macek`
+            subject: "Final Reminder: Coursework Deadline Approaching",
+            body: `Hi Students,\n\nCan you believe it? We’re now at the ${progress} mark of the fourth nine weeks, which means the end of the school year is just one week away!\n\n${isFourthAll && dual ? dual + "\n\n" : deadline ? `All cyber assignments are due by ${deadline}.\n\n` : ""}If you’re not near the ${progress} mark yet or haven’t started, don’t panic—but don’t wait. Power through those last few lessons, and don’t hesitate to reach out if you’re stuck. I’m here to support you all the way to the finish line.\n\nIf you’re on track or ahead—amazing work! Keep that momentum going. The effort you put in now will pay off with a strong finish and a stress-free summer. You’ve come so far—dig deep, stay focused, and make this final week count.\n\nYou got this!\n\nMr. Macek`
           };
-        case 'Seniors Final': {
-          const subject = deadline
-            ? `*SENIORS ONLY* Final Reminder: Coursework Due by ${deadline}`
-            : '*SENIORS ONLY* Final Reminder: Coursework Due Soon';
+        case "Seniors Final":
           return {
-            subject,
-            body:`Hi Seniors,\n\nWe are officially down to the final stretch! This is a final reminder that ALL of your cyber coursework must be completed and submitted by ${deadline || '[deadline]'}.`\n
-              + `\n\nPlease ensure you are checking your course progress, wrapping up any incomplete assignments, and reaching out if you need help. After the deadline, no additional submissions will be accepted.\n\nLet’s finish strong!\n\nMr. Macek`
+            subject: deadline ? `*SENIORS ONLY* Final Reminder: Coursework Due by ${deadline}` : "*SENIORS ONLY* Final Reminder: Coursework Due Soon",
+            body: `Hi Seniors,\n\nWe are officially down to the final stretch! This is a final reminder that ALL of your cyber coursework must be completed and submitted by ${deadline || "[deadline]"}.\n\nPlease ensure you are checking your course progress, wrapping up any incomplete assignments, and reaching out if you need help. After the deadline, no additional submissions will be accepted.\n\nLet’s finish strong!\n\nMr. Macek`
           };
-        }
-        case 'End-of-Year':
-          if (audience === 'Seniors') {
+        case "End-of-Year":
+          if (audience === "Seniors") {
             return {
-              subject:'*SENIORS ONLY* Final Reminder: All Coursework Due',
-              body:`Hi Seniors,\n\nAs we wrap up the year, this is a final reminder that all of your cyber coursework must be completed and submitted by ${deadline || '[deadline]'}.`\n
-                + `\n\nPlease ensure you are checking your course progress, finishing incomplete assignments, and reaching out if you need help. After the deadline, no additional submissions will be accepted.\n\nCongratulations and best of luck.\n\nMr. Macek`
+              subject: "*SENIORS ONLY* Final Reminder: All Coursework Due",
+              body: `Hi Seniors,\n\nAs we wrap up the year, this is a final reminder that all of your cyber coursework must be completed and submitted by ${deadline || "[deadline]"}.\n\nPlease ensure you are checking your course progress, finishing incomplete assignments, and reaching out if you need help. After the deadline, no additional submissions will be accepted.\n\nCongratulations and best of luck.\n\nMr. Macek`
             };
           }
           return {
-            subject:'Final Reminder: End-of-Year Cyber Coursework Due',
-            body:`Hi Students,\n\nAs we wrap up the year, this is a reminder that all cyber coursework for students in grades 7–11 must be completed and submitted by ${deadline || '[deadline]'}.`\n
-              + `\n\nPlease make sure you are checking your course progress, wrapping up any incomplete assignments, and submitting everything before the deadline. If you have questions or need help, please reach out.\n\nHave a great summer!\n\nMr. Macek`
+            subject: "Final Reminder: End-of-Year Cyber Coursework Due",
+            body: `Hi Students,\n\nAs we wrap up the year, this is a reminder that all cyber coursework for students in grades 7–11 must be completed and submitted by ${deadline || "[deadline]"}.\n\nPlease make sure you are checking your course progress, wrapping up any incomplete assignments, and submitting everything before the deadline. If you have questions or need help, please reach out.\n\nHave a great summer!\n\nMr. Macek`
           };
-        case 'General Start / Motivation':
+        case "General Start / Motivation":
           return {
-            subject:'Computer Science Course Enrollment - Getting Started',
-            body:`${studentName || '[Student Name]'},\n\nThis is a friendly reminder to please begin the course you are enrolled in. Starting the course as soon as possible will help ensure you have enough time to complete all the required lessons and assignments.\n\nPlease let me know if you have any questions about the course content, the platform, or how to get started. I am happy to help!\n\nMr. Macek`
+            subject: "Computer Science Course Enrollment - Getting Started",
+            body: `${studentName || "[Student Name]"},\n\nThis is a friendly reminder to please begin the course you are enrolled in. Starting the course as soon as possible will help ensure you have enough time to complete all the required lessons and assignments.\n\nPlease let me know if you have any questions about the course content, the platform, or how to get started. I am happy to help!\n\nMr. Macek`
           };
         default:
-          return { subject:'Cyber Update', body:`${greet}\n\nCourse update ready.\n\nMr. Macek` };
+          return {
+            subject: "Cyber Update",
+            body: `${greet}\n\nCourse update ready.\n\nMr. Macek`
+          };
       }
     }
 
-    function updateEmailAudience(){
-      const type = $('emailType').value;
-      const current = $('audienceType').value;
-      setOptions($('audienceType'), audienceOptions[type] || ['All Students']);
-      const options = [...$('audienceType').options].map(o => o.value);
-      $('audienceType').value = options.includes(current) ? current : options[0];
+    function updateEmailAudience() {
+      const type = $("emailType").value;
+      const current = $("audienceType").value;
+      setOptions($("audienceType"), audienceOptions[type] || ["All Students"]);
+      const options = [...$("audienceType").options].map((o) => o.value);
+      $("audienceType").value = options.includes(current) ? current : options[0];
     }
 
-    function updateEmailVisibility(){
-      const type = $('emailType').value;
-      const audience = $('audienceType').value;
-      const showSingle = audience === 'Single Student';
-      const showProgress = ['25% Check-In','50% Check-In','75% Check-In','Final Week'].includes(type);
-      const showRefDate = ['25% Check-In','75% Check-In'].includes(type);
-      const showDeadline = ['25% Check-In','75% Check-In','Final Week','Seniors Final','End-of-Year'].includes(type);
-      const showDual = ['25% Check-In','50% Check-In','75% Check-In','Next Nine Weeks Loaded','Final Week'].includes(type) && $('termType').value === 'fourth' && audience === 'All Students';
+    function updateEmailVisibility() {
+      const type = $("emailType").value;
+      const audience = $("audienceType").value;
+      const showSingle = audience === "Single Student";
+      const showProgress = ["25% Check-In","50% Check-In","75% Check-In","Final Week"].includes(type);
+      const showRefDate = ["25% Check-In","75% Check-In"].includes(type);
+      const showDeadline = ["25% Check-In","75% Check-In","Final Week","Seniors Final","End-of-Year"].includes(type);
+      const showDual = ["25% Check-In","50% Check-In","75% Check-In","Next Nine Weeks Loaded","Final Week"].includes(type) && $("termType").value === "fourth" && audience === "All Students";
 
-      $('studentNameWrap').classList.toggle('hidden', !showSingle);
-      $('progressWrap').classList.toggle('hidden', !showProgress);
-      $('referenceDateWrap').classList.toggle('hidden', !showRefDate);
-      $('deadlineWrap').classList.toggle('hidden', !showDeadline && !showDual);
-      $('dualDeadlineWrap').classList.toggle('hidden', !showDual);
+      $("studentNameWrap").classList.toggle("hidden", !showSingle);
+      $("progressWrap").classList.toggle("hidden", !showProgress);
+      $("referenceDateWrap").classList.toggle("hidden", !showRefDate);
+      $("deadlineWrap").classList.toggle("hidden", !showDeadline && !showDual);
+      $("dualDeadlineWrap").classList.toggle("hidden", !showDual);
 
-      $('progressTarget').value = defaultProgress(type) || $('progressTarget').value;
+      const autoProgress = defaultProgress(type);
+      if (autoProgress) $("progressTarget").value = autoProgress;
     }
 
-    function updateCombined(){
-      $('emailCombined').value = `Subject: ${$('emailSubject').value}\n\n${$('emailBody').value}`;
+    function updateCombined() {
+      $("emailCombined").value = `Subject: ${$("emailSubject").value}\n\n${$("emailBody").value}`;
     }
 
-    function updateEmailOutput(force=false){
+    function updateEmailOutput(force = false) {
       updateEmailVisibility();
       const key = emailKey();
       const template = buildEmailTemplate();
       const saved = emailOverrides[key];
-      if ($('emailSubject').readOnly || force) $('emailSubject').value = saved?.subject || template.subject;
-      if ($('emailBody').readOnly || force) $('emailBody').value = saved?.body || template.body;
+      if ($("emailSubject").readOnly || force) $("emailSubject").value = saved?.subject || template.subject;
+      if ($("emailBody").readOnly || force) $("emailBody").value = saved?.body || template.body;
       updateCombined();
     }
 
-    function activateTab(button){
-      document.querySelectorAll('.tab-btn').forEach(btn => {
+    function activateTab(button) {
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
         const active = btn === button;
-        btn.classList.toggle('active', active);
-        btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        btn.classList.toggle("active", active);
+        btn.setAttribute("aria-selected", active ? "true" : "false");
       });
-      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
-      $(button.dataset.tab).classList.add('active');
-      $('tabHelp').textContent = button.dataset.tab === 'gradingTab'
-        ? 'Pick the work type, category, and option. Output updates instantly.'
-        : 'Start with email type, then the template adjusts to your workflow.';
+      document.querySelectorAll(".tab-panel").forEach((panel) => panel.classList.remove("active"));
+      $(button.dataset.tab).classList.add("active");
     }
 
-    function getSessionState(){
+    function getSessionState() {
       return {
         grading: {
-          workType: $('workType').value,
-          categoryType: $('categoryType').value,
-          optionType: $('optionType').value,
-          gradeOutput: $('gradeOutput').value
+          workType: $("workType").value,
+          categoryType: $("categoryType").value,
+          optionType: $("optionType").value,
+          gradeOutput: $("gradeOutput").value
         },
         email: {
-          emailType: $('emailType').value,
-          audienceType: $('audienceType').value,
-          termType: $('termType').value,
-          courseScope: $('courseScope').value,
-          studentName: $('studentName').value,
-          courseName: $('courseName').value,
-          progressTarget: $('progressTarget').value,
-          referenceDate: $('referenceDate').value,
-          deadlineDate: $('deadlineDate').value,
-          seniorDeadline: $('seniorDeadline').value,
-          generalDeadline: $('generalDeadline').value,
-          emailSubject: $('emailSubject').value,
-          emailBody: $('emailBody').value
+          emailType: $("emailType").value,
+          audienceType: $("audienceType").value,
+          termType: $("termType").value,
+          courseScope: $("courseScope").value,
+          studentName: $("studentName").value,
+          courseName: $("courseName").value,
+          progressTarget: $("progressTarget").value,
+          referenceDate: $("referenceDate").value,
+          deadlineDate: $("deadlineDate").value,
+          seniorDeadline: $("seniorDeadline").value,
+          generalDeadline: $("generalDeadline").value,
+          emailSubject: $("emailSubject").value,
+          emailBody: $("emailBody").value
         }
       };
     }
 
-    function applySessionState(state){
+    function applySessionState(state) {
       if (!state) return;
+
       if (state.grading) {
-        if (state.grading.workType) $('workType').value = state.grading.workType;
+        if (state.grading.workType) $("workType").value = state.grading.workType;
         updateGradeCategories();
-        if (state.grading.categoryType) $('categoryType').value = state.grading.categoryType;
-        setOptions($('optionType'), Object.keys(gradingData[$('workType').value]?.[$('categoryType').value] || {}));
-        $('optionType').value = state.grading.optionType || 'Option 1';
-        $('gradeOutput').value = state.grading.gradeOutput || getDefaultGradeText();
+        if (state.grading.categoryType) $("categoryType").value = state.grading.categoryType;
+        setOptions($("optionType"), Object.keys(gradingData[$("workType").value]?.[$("categoryType").value] || {}));
+        $("optionType").value = state.grading.optionType || "Option 1";
+        $("gradeOutput").value = state.grading.gradeOutput || getDefaultGradeText();
       }
+
       if (state.email) {
-        $('emailType').value = state.email.emailType || $('emailType').value;
+        $("emailType").value = state.email.emailType || $("emailType").value;
         updateEmailAudience();
-        $('audienceType').value = state.email.audienceType || $('audienceType').value;
-        $('termType').value = state.email.termType || $('termType').value;
-        $('courseScope').value = state.email.courseScope || $('courseScope').value;
-        $('studentName').value = state.email.studentName || '';
-        $('courseName').value = state.email.courseName || '';
-        $('progressTarget').value = state.email.progressTarget || $('progressTarget').value;
-        $('referenceDate').value = state.email.referenceDate || $('referenceDate').value;
-        $('deadlineDate').value = state.email.deadlineDate || '';
-        $('seniorDeadline').value = state.email.seniorDeadline || '';
-        $('generalDeadline').value = state.email.generalDeadline || '';
+        $("audienceType").value = state.email.audienceType || $("audienceType").value;
+        $("termType").value = state.email.termType || $("termType").value;
+        $("courseScope").value = state.email.courseScope || $("courseScope").value;
+        $("studentName").value = state.email.studentName || "";
+        $("courseName").value = state.email.courseName || "";
+        $("progressTarget").value = state.email.progressTarget || $("progressTarget").value;
+        $("referenceDate").value = state.email.referenceDate || $("referenceDate").value;
+        $("deadlineDate").value = state.email.deadlineDate || "";
+        $("seniorDeadline").value = state.email.seniorDeadline || "";
+        $("generalDeadline").value = state.email.generalDeadline || "";
         updateEmailOutput(true);
-        if (state.email.emailSubject) $('emailSubject').value = state.email.emailSubject;
-        if (state.email.emailBody) $('emailBody').value = state.email.emailBody;
+        if (state.email.emailSubject) $("emailSubject").value = state.email.emailSubject;
+        if (state.email.emailBody) $("emailBody").value = state.email.emailBody;
         updateCombined();
       }
     }
 
-    function exportData(){
+    function exportData() {
       return {
         exportedAt: new Date().toISOString(),
-        app: 'CyberGrader Phase 2',
+        app: "CyberGrader Phase 2 Fixed",
         gradeOverrides,
         emailOverrides,
         sessionCache: loadJSON(STORAGE.sessionCache, {})
       };
     }
 
-    function downloadFile(filename, content, type='application/json'){
+    function downloadFile(filename, content, type = "application/json") {
       const blob = new Blob([content], { type });
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = url;
       a.download = filename;
       document.body.appendChild(a);
@@ -805,126 +742,134 @@
       URL.revokeObjectURL(url);
     }
 
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.addEventListener('click', () => activateTab(btn)));
+    function init() {
+      setToday();
 
-    setOptions($('workType'), Object.keys(gradingData));
-    setOptions($('emailType'), emailTypes);
-    updateGradeCategories();
-    updateEmailAudience();
-    updateEmailOutput(true);
-    activateTab(document.querySelector('.tab-btn.grade'));
+      setOptions($("workType"), Object.keys(gradingData));
+      setOptions($("emailType"), emailTypes);
 
-    $('workType').addEventListener('change', updateGradeCategories);
-    $('categoryType').addEventListener('change', updateGradeOptions);
-    $('optionType').addEventListener('change', () => updateGradeOutput(true));
-
-    $('editGradeToggle').addEventListener('click', () => setEditable($('gradeOutput'), $('editGradeToggle'), $('gradeOutput').readOnly));
-    $('copyGradeOutput').addEventListener('click', () => copyText($('gradeOutput').value.trim(), $('gradeStatus'), $('copyGradeOutput')));
-    $('saveGradeOverride').addEventListener('click', () => {
-      gradeOverrides[gradeKey()] = $('gradeOutput').value.trim();
-      saveJSON(STORAGE.gradeOverrides, gradeOverrides);
-      $('gradeStatus').textContent = 'Grade override saved on this device.';
-    });
-    $('resetGradeOverride').addEventListener('click', () => {
-      delete gradeOverrides[gradeKey()];
-      saveJSON(STORAGE.gradeOverrides, gradeOverrides);
-      $('gradeOutput').value = getDefaultGradeText();
-      $('gradeStatus').textContent = 'Grade template reset.';
-    });
-
-    ['emailType','termType','courseScope'].forEach(id => $(id).addEventListener('change', () => {
-      if (id === 'emailType') updateEmailAudience();
+      updateGradeCategories();
+      updateEmailAudience();
       updateEmailOutput(true);
-    }));
+      activateTab(document.querySelector(".tab-btn.grade"));
 
-    ['audienceType','studentName','courseName','progressTarget','referenceDate','deadlineDate','seniorDeadline','generalDeadline'].forEach(id => {
-      const el = $(id);
-      el.addEventListener('input', () => updateEmailOutput(true));
-      el.addEventListener('change', () => updateEmailOutput(true));
-    });
+      document.querySelectorAll(".tab-btn").forEach((btn) => btn.addEventListener("click", () => activateTab(btn)));
 
-    $('editSubjectToggle').addEventListener('click', () => setEditable($('emailSubject'), $('editSubjectToggle'), $('emailSubject').readOnly));
-    $('editBodyToggle').addEventListener('click', () => setEditable($('emailBody'), $('editBodyToggle'), $('emailBody').readOnly));
+      $("workType").addEventListener("change", updateGradeCategories);
+      $("categoryType").addEventListener("change", updateGradeOptions);
+      $("optionType").addEventListener("change", () => updateGradeOutput(true));
 
-    $('saveEmailOverride').addEventListener('click', () => {
-      emailOverrides[emailKey()] = {
-        subject: $('emailSubject').value.trim(),
-        body: $('emailBody').value.trim()
-      };
-      saveJSON(STORAGE.emailOverrides, emailOverrides);
-      updateCombined();
-      $('emailStatus').textContent = 'Email override saved on this device.';
-    });
+      $("editGradeToggle").addEventListener("click", () => setEditable($("gradeOutput"), $("editGradeToggle"), $("gradeOutput").readOnly));
+      $("copyGradeOutput").addEventListener("click", () => copyText($("gradeOutput").value.trim(), $("gradeStatus"), $("copyGradeOutput")));
+      $("saveGradeOverride").addEventListener("click", () => {
+        gradeOverrides[gradeKey()] = $("gradeOutput").value.trim();
+        saveJSON(STORAGE.gradeOverrides, gradeOverrides);
+        $("gradeStatus").textContent = "Grade override saved on this device.";
+      });
+      $("resetGradeOverride").addEventListener("click", () => {
+        delete gradeOverrides[gradeKey()];
+        saveJSON(STORAGE.gradeOverrides, gradeOverrides);
+        $("gradeOutput").value = getDefaultGradeText();
+        $("gradeStatus").textContent = "Grade template reset.";
+      });
 
-    $('resetEmailOverride').addEventListener('click', () => {
-      delete emailOverrides[emailKey()];
-      saveJSON(STORAGE.emailOverrides, emailOverrides);
-      updateEmailOutput(true);
-      $('emailStatus').textContent = 'Email template reset.';
-    });
+      ["emailType","termType","courseScope"].forEach((id) => {
+        $(id).addEventListener("change", () => {
+          if (id === "emailType") updateEmailAudience();
+          updateEmailOutput(true);
+        });
+      });
 
-    $('copySubject').addEventListener('click', () => copyText($('emailSubject').value.trim(), $('emailStatus'), $('copySubject')));
-    $('copyBody').addEventListener('click', () => copyText($('emailBody').value.trim(), $('emailStatus'), $('copyBody')));
-    $('copyCombined').addEventListener('click', () => {
-      updateCombined();
-      copyText($('emailCombined').value.trim(), $('emailStatus'), $('copyCombined'));
-    });
+      ["audienceType","studentName","courseName","progressTarget","referenceDate","deadlineDate","seniorDeadline","generalDeadline"].forEach((id) => {
+        $(id).addEventListener("input", () => updateEmailOutput(true));
+        $(id).addEventListener("change", () => updateEmailOutput(true));
+      });
 
-    $('emailSubject').addEventListener('input', updateCombined);
-    $('emailBody').addEventListener('input', updateCombined);
+      $("editSubjectToggle").addEventListener("click", () => setEditable($("emailSubject"), $("editSubjectToggle"), $("emailSubject").readOnly));
+      $("editBodyToggle").addEventListener("click", () => setEditable($("emailBody"), $("editBodyToggle"), $("emailBody").readOnly));
 
-    $('saveSessionCache').addEventListener('click', () => {
-      saveJSON(STORAGE.sessionCache, getSessionState());
-      $('emailStatus').textContent = 'Session Cache saved on this device.';
-    });
+      $("saveEmailOverride").addEventListener("click", () => {
+        emailOverrides[emailKey()] = {
+          subject: $("emailSubject").value.trim(),
+          body: $("emailBody").value.trim()
+        };
+        saveJSON(STORAGE.emailOverrides, emailOverrides);
+        updateCombined();
+        $("emailStatus").textContent = "Email override saved on this device.";
+      });
 
-    $('loadSessionCache').addEventListener('click', () => {
-      const session = loadJSON(STORAGE.sessionCache, {});
-      if (!Object.keys(session).length) {
-        $('emailStatus').textContent = 'No Session Cache found on this device.';
-        return;
-      }
-      applySessionState(session);
-      $('emailStatus').textContent = 'Session Cache loaded.';
-    });
-
-    $('deleteSessionCache').addEventListener('click', () => {
-      localStorage.removeItem(STORAGE.sessionCache);
-      $('emailStatus').textContent = 'Session Cache deleted.';
-    });
-
-    $('exportJson').addEventListener('click', () => {
-      const payload = JSON.stringify(exportData(), null, 2);
-      downloadFile('cybergrader-phase2-backup.json', payload);
-      $('emailStatus').textContent = 'JSON export created.';
-    });
-
-    $('importJsonBtn').addEventListener('click', () => $('importJsonInput').click());
-    $('importJsonInput').addEventListener('change', async (e) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
-      try {
-        const text = await file.text();
-        const data = JSON.parse(text);
-        if (data.gradeOverrides && typeof data.gradeOverrides === 'object') {
-          gradeOverrides = data.gradeOverrides;
-          saveJSON(STORAGE.gradeOverrides, gradeOverrides);
-        }
-        if (data.emailOverrides && typeof data.emailOverrides === 'object') {
-          emailOverrides = data.emailOverrides;
-          saveJSON(STORAGE.emailOverrides, emailOverrides);
-        }
-        if (data.sessionCache && typeof data.sessionCache === 'object') {
-          saveJSON(STORAGE.sessionCache, data.sessionCache);
-        }
-        updateGradeOutput(true);
+      $("resetEmailOverride").addEventListener("click", () => {
+        delete emailOverrides[emailKey()];
+        saveJSON(STORAGE.emailOverrides, emailOverrides);
         updateEmailOutput(true);
-        $('emailStatus').textContent = 'JSON import complete.';
-      } catch {
-        $('emailStatus').textContent = 'Import failed. Please use a valid CyberGrader JSON file.';
-      }
-      e.target.value = '';
-    });
+        $("emailStatus").textContent = "Email template reset.";
+      });
+
+      $("copySubject").addEventListener("click", () => copyText($("emailSubject").value.trim(), $("emailStatus"), $("copySubject")));
+      $("copyBody").addEventListener("click", () => copyText($("emailBody").value.trim(), $("emailStatus"), $("copyBody")));
+      $("copyCombined").addEventListener("click", () => {
+        updateCombined();
+        copyText($("emailCombined").value.trim(), $("emailStatus"), $("copyCombined"));
+      });
+
+      $("emailSubject").addEventListener("input", updateCombined);
+      $("emailBody").addEventListener("input", updateCombined);
+
+      $("saveSessionCache").addEventListener("click", () => {
+        saveJSON(STORAGE.sessionCache, getSessionState());
+        $("emailStatus").textContent = "Session Cache saved on this device.";
+      });
+
+      $("loadSessionCache").addEventListener("click", () => {
+        const session = loadJSON(STORAGE.sessionCache, {});
+        if (!Object.keys(session).length) {
+          $("emailStatus").textContent = "No Session Cache found on this device.";
+          return;
+        }
+        applySessionState(session);
+        $("emailStatus").textContent = "Session Cache loaded.";
+      });
+
+      $("deleteSessionCache").addEventListener("click", () => {
+        localStorage.removeItem(STORAGE.sessionCache);
+        $("emailStatus").textContent = "Session Cache deleted.";
+      });
+
+      $("exportJson").addEventListener("click", () => {
+        const payload = JSON.stringify(exportData(), null, 2);
+        downloadFile("cybergrader-phase2-fixed-backup.json", payload);
+        $("emailStatus").textContent = "JSON export created.";
+      });
+
+      $("importJsonBtn").addEventListener("click", () => $("importJsonInput").click());
+      $("importJsonInput").addEventListener("change", async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+          if (data.gradeOverrides && typeof data.gradeOverrides === "object") {
+            gradeOverrides = data.gradeOverrides;
+            saveJSON(STORAGE.gradeOverrides, gradeOverrides);
+          }
+          if (data.emailOverrides && typeof data.emailOverrides === "object") {
+            emailOverrides = data.emailOverrides;
+            saveJSON(STORAGE.emailOverrides, emailOverrides);
+          }
+          if (data.sessionCache && typeof data.sessionCache === "object") {
+            saveJSON(STORAGE.sessionCache, data.sessionCache);
+          }
+          updateGradeOutput(true);
+          updateEmailOutput(true);
+          $("emailStatus").textContent = "JSON import complete.";
+        } catch {
+          $("emailStatus").textContent = "Import failed. Please use a valid CyberGrader JSON file.";
+        }
+        e.target.value = "";
+      });
+    }
+
+    window.addEventListener("DOMContentLoaded", init);
   </script>
 </body>
 </html>
