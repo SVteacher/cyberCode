@@ -1,80 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CyberGrader.io</title>
 <style>
-body{background:#0b0f17;color:#fff;font-family:Arial;margin:0;padding:20px}
-h1{font-size:36px;margin:0;color:#51d9ff}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-.date{color:#51d9ff;text-align:right;font-weight:bold}
-.box{background:#111827;padding:15px;border-radius:10px;margin-bottom:15px;border:1px solid #1f2937}
-textarea{width:100%;height:120px;background:#020617;color:#fff;border:1px solid #1f2937;border-radius:8px;padding:10px}
-button{padding:10px 15px;margin-top:10px;background:#51d9ff;border:none;border-radius:6px;cursor:pointer}
+:root{
+--bg:#0b0f17;
+--panel:#111827;
+--accent:#51d9ff;
+--text:#ffffff;
+--muted:#9ca3af;
+}
+body{margin:0;font-family:Arial;background:var(--bg);color:var(--text)}
+.header{display:flex;justify-content:space-between;padding:20px}
+h1{margin:0;color:var(--accent);font-size:36px}
+.date{color:var(--accent);text-align:right}
+.container{display:flex;gap:20px;padding:20px}
+.left{width:320px}
+.right{flex:1}
+.box{background:var(--panel);padding:15px;border-radius:12px;margin-bottom:15px}
+select,textarea,input{width:100%;margin-top:10px;padding:10px;border-radius:8px;border:1px solid #1f2937;background:#020617;color:#fff}
+textarea{height:150px}
+button{width:100%;padding:12px;margin-top:10px;border:none;border-radius:8px;background:var(--accent);font-weight:bold;cursor:pointer}
+.cache-item{background:#020617;padding:10px;border-radius:8px;margin-top:10px;font-size:12px}
+@media(max-width:900px){
+.container{flex-direction:column}
+.left{width:100%}
+}
 </style>
 </head>
 
 <body>
 
 <div class="header">
-<div>
 <h1>CyberGrader.io</h1>
-</div>
 <div class="date">
 <div>Today's Date</div>
 <div id="date"></div>
 </div>
 </div>
 
+<div class="container">
+
+<div class="left">
+
 <div class="box">
 <b>How to Use</b>
 <ul>
-<li>Grading Output is for student feedback.</li>
-<li>Email Generator is for recurring, consistent student communication.</li>
-<li>Saved wording override stays on this device.</li>
-<li>Select your grading output, use dropdowns to narrow type, then adjust if needed.</li>
+<li>Grading Output is for student feedback</li>
+<li>Email Generator is for consistent communication</li>
+<li>Select → Copy → Move on</li>
 </ul>
 </div>
 
 <div class="box">
-<b>Grading Output</b><br><br>
+<b>Session Cache</b>
+<div id="cache"></div>
+<button onclick="exportData()">Export</button>
+<input type="file" onchange="importData(event)">
+</div>
 
-<select id="type">
-<option>Perfect</option>
-<option>Partial</option>
-<option>Missing</option>
+</div>
+
+<div class="right">
+
+<div class="box">
+<b>Grading Output</b>
+
+<select id="work">
+<option>Assignment - Perfect</option>
+<option>Assignment - Partial Credit</option>
+<option>Assignment - Missing</option>
 </select>
 
 <textarea id="output"></textarea>
-<br>
+
 <button onclick="copy()">Copy Output</button>
+<button onclick="save()">Save to Cache</button>
+
+</div>
+
+</div>
 
 </div>
 
 <script>
-document.getElementById("date").innerText = new Date().toLocaleDateString();
+document.getElementById("date").innerText = new Date().toLocaleDateString()
 
 function generate(){
-let t = document.getElementById("type").value;
-let d = new Date().toLocaleDateString();
+let d=new Date().toLocaleDateString()
+let val=document.getElementById("work").value
 
-if(t==="Perfect"){
-document.getElementById("output").value = "Graded "+d+" - Great job. You understood the lesson and showed effort. Keep it up.";
+if(val.includes("Perfect")){
+output.value="Graded "+d+" - You clearly understood the lesson and showed effort. Keep it up."
 }
-if(t==="Partial"){
-document.getElementById("output").value = "Graded "+d+" - I gave you credit where I could. Make sure you read each question carefully and use answers from the lesson.";
+else if(val.includes("Partial")){
+output.value="Graded "+d+" - I gave you credit where I could. Make sure you read carefully and use answers from the lesson."
 }
-if(t==="Missing"){
-document.getElementById("output").value = "Graded "+d+" - This assignment was missing or not complete. Please reach out so I can help you fix it.";
+else{
+output.value="Graded "+d+" - Your work is missing or incomplete. Please reach out so I can help you."
 }
 }
 
-document.getElementById("type").addEventListener("change", generate);
-generate();
+work.addEventListener("change",generate)
+generate()
 
 function copy(){
-navigator.clipboard.writeText(document.getElementById("output").value);
+navigator.clipboard.writeText(output.value)
+}
+
+function save(){
+let data=JSON.parse(localStorage.getItem("cg")||"[]")
+data.push(output.value)
+localStorage.setItem("cg",JSON.stringify(data))
+render()
+}
+
+function render(){
+let data=JSON.parse(localStorage.getItem("cg")||"[]")
+cache.innerHTML=""
+data.slice(-5).forEach(x=>{
+let d=document.createElement("div")
+d.className="cache-item"
+d.innerText=x
+cache.appendChild(d)
+})
+}
+render()
+
+function exportData(){
+let data=localStorage.getItem("cg")
+let blob=new Blob([data],{type:"application/json"})
+let a=document.createElement("a")
+a.href=URL.createObjectURL(blob)
+a.download="cybergrader.json"
+a.click()
+}
+
+function importData(e){
+let file=e.target.files[0]
+let reader=new FileReader()
+reader.onload=()=>{
+localStorage.setItem("cg",reader.result)
+render()
+}
+reader.readAsText(file)
 }
 </script>
 
